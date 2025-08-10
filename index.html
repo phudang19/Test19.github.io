@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --netflix-red: #e50914;
+            --netflix-dark: #141414;
+            --netflix-gray: #303030;
+        }
+        
+        body {
+            background-color: var(--netflix-dark);
+            color: white;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        .navbar {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(to top, rgba(20,20,20,1) 0%, rgba(20,20,20,0.8) 20%, rgba(20,20,20,0) 50%);
+        }
+        
+        .movie-card:hover {
+            transform: scale(1.1);
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+        
+        .movie-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                padding-top: 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed top-0 w-full z-50 flex items-center justify-between px-4 py-3">
+        <div class="flex items-center">
+            <h1 class="text-3xl font-bold text-[var(--netflix-red)] mr-10">NETFLIX</h1>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-white hover:text-gray-300">Trang chủ</a>
+                <a href="#" class="text-white hover:text-gray-300">Thể loại</a>
+                <a href="#" class="text-white hover:text-gray-300">Phim bộ</a>
+                <a href="#" class="text-white hover:text-gray-300">Phim lẻ</a>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button class="text-white">
+                <i class="fas fa-search text-xl"></i>
+            </button>
+            <button class="text-white">
+                <i class="fas fa-bell text-xl"></i>
+            </button>
+            <div class="w-8 h-8 bg-blue-500 rounded-md"></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-start hero-bg">
+        <img src="https://placehold.co/1920x1080" alt="Featured movie banner: Avengers Endgame with superhero team standing ready for battle" class="absolute w-full h-full object-cover -z-10">
+        
+        <div class="hero-content px-8 md:px-16 lg:px-32 max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Em và Anh</h1>
+            <p class="text-lg mb-6">Phú – cậu học trò cá biệt, và Trâm – cô lớp trưởng gương mẫu, bắt đầu mối duyên nợ từ một sự cố bất ngờ năm lớp 8...</p>
+            <div class="flex space-x-4">
+                <button class="bg-[var(--netflix-red)] text-white px-6 py-2 rounded-md flex items-center">
+                    <i class="fas fa-play mr-2"></i> Phát
+                </button>
+                <button class="bg-gray-600 bg-opacity-70 text-white px-6 py-2 rounded-md flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i> Thông tin thêm
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Rows -->
+    <div class="px-4 md:px-8 lg:px-16 mt-8">
+        <!-- Trending Now -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-4 ml-2">Xu hướng hiện tại</h2>
+            <div class="relative">
+                <div class="carousel flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Stranger Things promotional poster with group of kids on bikes at night" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Stranger Things</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Repeat for other movies -->
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="The Witcher season 2 poster with Geralt holding sword in snowy landscape" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">The Witcher</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Squid Game promotional image with players in green tracksuits" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Squid Game</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Money Heist group photo with red jumpsuits and Salvador Dalí masks" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Money Heist</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Dark promotional poster with mysterious forest and time travel elements" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Dark</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular on Netflix -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-4 ml-2">Phổ biến trên Netflix</h2>
+            <div class="relative">
+                <div class="carousel flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="The Queen's Gambit promotional image with chess board and main character" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">The Queen's Gambit</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.8</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Bridgerton romantic scene with period costumes and luxurious setting" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Bridgerton</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Ozark dramatic scene with family in precarious situation" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Ozark</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="The Crown royal family portrait with exquisite period detail" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">The Crown</h3>
+                                <div class="flex items-center text-yellow-400">
+                                    <i class="fas fa-star mr-1"></i>
+                                    <span>4.6</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue Watching -->
+        <section class="mb-10">
+            <h2 class="text-2xl font-bold mb-4 ml-2">Tiếp tục xem</h2>
+            <div class="relative">
+                <div class="carousel flex overflow-x-auto space-x-4 pb-4 scrollbar-hide">
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Breaking Bad scene with Walter White in desert in iconic yellow suit" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Breaking Bad</h3>
+                                <div class="flex items-center">
+                                    <div class="w-full bg-gray-600 rounded-full h-2.5 mr-2">
+                                        <div class="bg-blue-500 h-2.5 rounded-full" style="width: 65%"></div>
+                                    </div>
+                                    <span class="text-sm">65%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Better Call Saul promotional image with lawyer Jimmy McGill" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Better Call Saul</h3>
+                                <div class="flex items-center">
+                                    <div class="w-full bg-gray-600 rounded-full h-2.5 mr-2">
+                                        <div class="bg-blue-500 h-2.5 rounded-full" style="width: 40%"></div>
+                                    </div>
+                                    <span class="text-sm">40%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-none carousel-item w-64 md:w-80">
+                        <div class="movie-card relative rounded-md overflow-hidden">
+                            <img src="https://placehold.co/400x225" alt="Peaky Blinders group shot with Tommy Shelby and family in period clothing" class="w-full">
+                            <div class="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black to-transparent">
+                                <h3 class="font-bold">Peaky Blinders</h3>
+                                <div class="flex items-center">
+                                    <div class="w-full bg-gray-600 rounded-full h-2.5 mr-2">
+                                        <div class="bg-blue-500 h-2.5 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                    <span class="text-sm">30%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 py-12">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-col md:flex-row md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold text-[var(--netflix-red)] mb-4">NETFLIX</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <h4 class="text-white mb-4">Công ty</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-gray-300">Giới thiệu</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Việc làm</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Tin tức</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-4">Tài khoản</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-gray-300">Đăng nhập</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Đăng ký</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Trợ giúp</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-4">Pháp lý</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-gray-300">Điều khoản</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Bảo mật</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Cookie</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-4">Liên hệ</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-gray-300">Hỗ trợ</a></li>
+                            <li><a href="#" class="hover:text-gray-300">API</a></li>
+                            <li><a href="#" class="hover:text-gray-300">Nhà phát triển</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <p class="text-sm">© 2023 Netflix Clone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple hover effect for movie cards
+        document.querySelectorAll('.movie-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.1)';
+                card.style.zIndex = '10';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+                card.style.zIndex = '1';
+            });
+        });
+
+        // Smooth scrolling for carousels
+        document.querySelectorAll('.carousel').forEach(carousel => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            carousel.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - carousel.offsetLeft;
+                scrollLeft = carousel.scrollLeft;
+                carousel.style.cursor = 'grabbing';
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                isDown = false;
+                carousel.style.cursor = 'grab';
+            });
+
+            carousel.addEventListener('mouseup', () => {
+                isDown = false;
+                carousel.style.cursor = 'grab';
+            });
+
+            carousel.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - carousel.offsetLeft;
+                const walk = (x - startX) * 2; // Adjust scrolling speed
+                carousel.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+</body>
+</html>
